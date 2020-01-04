@@ -17,7 +17,7 @@ class User extends Component {
   }
 
   onEdit() {
-    console.log("Exercise to EDIT: " + this.state.ex._id);
+    console.log("User to EDIT: " + this.state.ex._id);
     window.location = "/edit/" + this.state.ex.id;
   }
 
@@ -57,14 +57,13 @@ class User extends Component {
             {this.state.ex != null && this.state.ex != undefined
               ? "AGE: " + this.state.ex.employee_age
               : ""}{" "}
-          </p>
+          </p>{" "}
           <div
             className="btn-group"
             style={{
               float: "right"
             }}
             role="group"
-            aria-label="Basic example"
           >
             <button
               type="button"

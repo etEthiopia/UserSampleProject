@@ -1,8 +1,12 @@
-import React, { Component } from "react";
+import React, {
+  Component
+} from "react";
 import DatePicker from "react-datepicker";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
-import { Link } from "react-router-dom";
+import {
+  Link
+} from "react-router-dom";
 
 class EditUSer extends Component {
   constructor(props) {
@@ -64,12 +68,12 @@ class EditUSer extends Component {
       id: this.props.match.params.id
     };
 
-    //console.log(exercise);
+
 
     axios
       .put(
         "http://dummy.restapiexample.com/api/v1/update/" +
-          this.props.match.params.id,
+        this.props.match.params.id,
         user
       )
       .then(res => {
@@ -81,56 +85,85 @@ class EditUSer extends Component {
   }
 
   render() {
-    return (
-      <div className="container">
-        <div className="row">
-          <form className="col-md-5" onSubmit={this.onSubmit}>
-            <fieldset>
-              <legend>Edit User {this.props.match.params.id}</legend>
+    return ( <
+      div className = "container" >
+      <
+      div className = "row" >
+      <
+      form className = "col-md-5"
+      onSubmit = {
+        this.onSubmit
+      } >
+      <
+      fieldset >
+      <
+      legend > Edit User {
+        this.props.match.params.id
+      } < /legend>
 
-              <div className="form-group">
-                <label for="fullname">Name</label>
-                <input
-                  className="form-control"
-                  id="fullname"
-                  type="text"
-                  value={this.state.fullname}
-                  placeholder="Enter Name"
-                  onChange={this.onChangeFullname}
-                />
-              </div>
+      <
+      div className = "form-group" >
+      <
+      label
+      for = "fullname" > Name < /label> <
+      input className = "form-control"
+      id = "fullname"
+      type = "text"
+      value = {
+        this.state.fullname
+      }
+      placeholder = "Enter Name"
+      onChange = {
+        this.onChangeFullname
+      }
+      /> <
+      /div>
 
-              <div className="form-group">
-                <label for="salary">Salary</label>
-                <input
-                  className="form-control"
-                  id="salary"
-                  type="number"
-                  value={this.state.salary}
-                  placeholder="Enter Salary"
-                  onChange={this.onChangeSalary}
-                />
-              </div>
+      <
+      div className = "form-group" >
+      <
+      label
+      for = "salary" > Salary < /label> <
+      input className = "form-control"
+      id = "salary"
+      type = "number"
+      value = {
+        this.state.salary
+      }
+      placeholder = "Enter Salary"
+      onChange = {
+        this.onChangeSalary
+      }
+      /> <
+      /div>
 
-              <div className="form-group">
-                <label for="age">Age</label>
-                <input
-                  className="form-control"
-                  id="age"
-                  type="number"
-                  value={this.state.age}
-                  placeholder="Enter Age"
-                  onChange={this.onChangeAge}
-                />
-              </div>
+      <
+      div className = "form-group" >
+      <
+      label
+      for = "age" > Age < /label> <
+      input className = "form-control"
+      id = "age"
+      type = "number"
+      value = {
+        this.state.age
+      }
+      placeholder = "Enter Age"
+      onChange = {
+        this.onChangeAge
+      }
+      /> <
+      /div>
 
-              <button className="btn btn-primary" type="submit">
-                Submit
-              </button>
-            </fieldset>
-          </form>
-        </div>
-      </div>
+      <
+      button className = "btn btn-primary"
+      type = "submit" >
+      Submit <
+      /button> <
+      /fieldset> <
+      /form> <
+      /div> <
+      /div>
     );
   }
 }

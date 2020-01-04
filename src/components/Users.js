@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Exercise from "./Exercise";
 import User from "./User";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
@@ -26,7 +25,7 @@ class Users extends Component {
   constructor() {
     super();
     this.state = {
-      exercises: [],
+      Ussers: [],
       searched: null,
       view: "",
       show: false,
@@ -111,7 +110,7 @@ class Users extends Component {
 
   refreshList() {
     this.setState({
-      exercises: []
+      Ussers: []
     });
     axios
       .get("http://dummy.restapiexample.com/api/v1/employees?_limit=200", {
@@ -122,7 +121,7 @@ class Users extends Component {
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
-            exercises: response.data.map(exercise => exercise)
+            Ussers: response.data.map(exercise => exercise)
           });
         }
       })
@@ -218,8 +217,9 @@ class Users extends Component {
           // style={{
           //   width: "300"
           // }}
+          //aria - label = "Basic example"
           >
-            <div className="btn-group" role="group" aria-label="Basic example">
+            <div className="btn-group" role="group">
               <Button
                 variant="warning"
                 onClick={() => this.handleEdit(row.original)}
@@ -264,6 +264,7 @@ class Users extends Component {
         </Modal>{" "}
         <Row className="justify-content-md-center">
           <Col>
+            {" "}
             {this.state.searching == true ? (
               <Button
                 variant="outline-secondary"
@@ -271,41 +272,43 @@ class Users extends Component {
                   this.onBack();
                 }}
               >
-                Back
+                Back{" "}
               </Button>
             ) : (
               ""
-            )}
-          </Col>
+            )}{" "}
+          </Col>{" "}
           <Col md="auto">
             <h3 className="text-right">
-              Enter the Id of the employee to the Right
-            </h3>
-          </Col>
+              Enter the Id of the employee to the Right{" "}
+            </h3>{" "}
+          </Col>{" "}
           <Col xs lg="3">
             <InputGroup className="mb-3">
               <FormControl
                 aria-describedby="basic-addon1"
                 onChange={this.onChangeId}
-              />
+              />{" "}
               <InputGroup.Prepend>
                 <Button
                   variant="outline-primary"
                   onClick={() => this.onSearch()}
                 >
-                  Search
-                </Button>
-              </InputGroup.Prepend>
-            </InputGroup>
-          </Col>
-        </Row>
+                  Search{" "}
+                </Button>{" "}
+              </InputGroup.Prepend>{" "}
+            </InputGroup>{" "}
+          </Col>{" "}
+        </Row>{" "}
         <Row>
           <Col>
+            {" "}
             {this.state.searching ? (
               <div>
+                {" "}
                 {this.state.searched == null ||
                 this.state.searched == undefined ? (
-                  <h2>{this.state.searchingText}</h2>
+                  <h2> {this.state.searchingText} </h2>
                 ) : (
                   // <h2>{JSON.stringify(this.state.searched)}</h2>
                   <User
@@ -313,24 +316,25 @@ class Users extends Component {
                     key={this.state.searched.id}
                     onDeletee={this.handleDelete}
                   />
-                )}
+                )}{" "}
               </div>
             ) : (
               <Tabs defaultActiveKey="table" id="uncontrolled-tab-example">
                 <Tab eventKey="table" title="Table View">
                   <Row>
                     <Col>
-                      {this.state.exercises.length > 0 ? (
+                      {" "}
+                      {this.state.Ussers.length > 0 ? (
                         <ReactTable
                           columns={columns}
-                          data={this.state.exercises}
+                          data={this.state.Ussers}
                           filterable
                         ></ReactTable>
                       ) : (
                         <div>
-                          <h1>{this.state.loadingtable}</h1>
+                          <h1> {this.state.loadingtable} </h1>{" "}
                         </div>
-                      )}
+                      )}{" "}
                     </Col>{" "}
                   </Row>{" "}
                 </Tab>{" "}
@@ -339,27 +343,25 @@ class Users extends Component {
                     <Col>
                       <div className="row">
                         {" "}
-                        {this.state.exercises.length > 0 ? (
-                          this.state.exercises
-                            .slice(0, 100)
-                            .map(exercise => (
-                              <User
-                                ex={exercise}
-                                key={exercise.id}
-                                onDeletee={this.handleDelete}
-                              />
-                            ))
+                        {this.state.Ussers.length > 0 ? (
+                          this.state.Ussers.slice(0, 100).map(exercise => (
+                            <User
+                              ex={exercise}
+                              key={exercise.id}
+                              onDeletee={this.handleDelete}
+                            />
+                          ))
                         ) : (
-                          <h1>{this.state.loadingtable}</h1>
+                          <h1> {this.state.loadingtable} </h1>
                         )}{" "}
                       </div>{" "}
                     </Col>{" "}
                   </Row>{" "}
                 </Tab>{" "}
               </Tabs>
-            )}
-          </Col>
-        </Row>
+            )}{" "}
+          </Col>{" "}
+        </Row>{" "}
       </Container>
     );
   }
